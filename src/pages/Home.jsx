@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Users, Landmark, Map, ArrowRight } from 'lucide-react';
 
 export default function Home() {
-  // Variasi animasi untuk efek muncul dari bawah (Fade Up)
   const fadeUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -12,18 +11,20 @@ export default function Home() {
   return (
     <div className="w-full bg-slate-50 font-sans">
       
-      {/* SECTION 1: Hero Video (Disempurnakan) */}
-      <section className="relative h-screen w-full overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+      {/* SECTION 1: Hero Sinematik (Anti-Blokir dengan Efek Animasi Looping) */}
+      <section className="relative h-screen w-full overflow-hidden bg-slate-900">
+        
+        {/* Gambar Background dengan Animasi Zooming (Ken Burns Effect) */}
+        <motion.img
+          src="https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?auto=format&fit=crop&w=1920&q=80" 
+          alt="Pemandangan Kyoto Malam Hari"
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        >
-          <source src="https://cdn.pixabay.com/video/2020/05/25/40141-424812061_large.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+          animate={{ scale: [1, 1.15, 1] }} // Bergerak membesar lalu mengecil
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }} // Looping terus menerus
+        />
+        
+        {/* Overlay Gelap agar Teks Terbaca Jelas */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
 
         <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
           <motion.div
@@ -51,7 +52,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: Sejarah Singkat Kyoto (Interaktif Gambar Bertumpuk) */}
+      {/* SECTION 2: Sejarah Singkat Kyoto */}
       <section className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
         <motion.div
           initial="hidden"
@@ -66,7 +67,7 @@ export default function Home() {
               Jejak Langkah <span className="text-red-600">Seribu Tahun</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              Sebelum Tokyo, Kyoto adalah jantung kekaisaran Jepang. Selama lebih dari 1.000 tahun, kota ini menjadi pusat mekarannya seni, budaya, serta agama Buddha dan Shinto yang membentuk identitas Jepang modern.
+              Sebelum Tokyo, Kyoto adalah jantung kekaisaran Jepang. Selama lebih dari 1.000 tahun, kota ini menjadi pusat mekarnya seni, budaya, serta agama Buddha dan Shinto yang membentuk identitas Jepang modern.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
               Hingga hari ini, Kyoto menyimpan keanggunan masa lalu yang berpadu harmonis dengan gemerlap kehidupan masa kini. Setiap sudut jalannya adalah museum hidup yang menanti untuk Anda telusuri.
@@ -76,7 +77,6 @@ export default function Home() {
             </Link>
           </div>
           
-          {/* Interaksi Gambar Animasi */}
           <div className="relative h-[400px] md:h-[550px] w-full flex justify-center items-center">
             <motion.img 
               whileHover={{ scale: 1.05, rotate: 2, zIndex: 30 }}
@@ -89,8 +89,8 @@ export default function Home() {
               whileHover={{ scale: 1.05, rotate: -2, zIndex: 30 }}
               transition={{ type: "spring", stiffness: 300 }}
               className="absolute bottom-4 left-4 md:bottom-10 md:left-0 w-3/5 rounded-3xl shadow-2xl border-8 border-white cursor-pointer origin-top-left z-10" 
-              src="https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?w=800" 
-              alt="Gion District" 
+              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800" 
+              alt="Arashiyama Bamboo" 
             />
           </div>
         </motion.div>
@@ -98,7 +98,6 @@ export default function Home() {
 
       {/* SECTION 3: Statistik Interaktif */}
       <section className="py-24 bg-red-950 text-white relative overflow-hidden">
-        {/* Dekorasi Background */}
         <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1600')] bg-cover bg-fixed bg-center mix-blend-luminosity"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/50 to-red-950"></div>
         
@@ -117,7 +116,6 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card Statistik 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +129,6 @@ export default function Home() {
               <p className="text-red-200 font-medium">Turis per Tahun</p>
             </motion.div>
 
-            {/* Card Statistik 2 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -145,7 +142,6 @@ export default function Home() {
               <p className="text-red-200 font-medium">Situs Warisan Dunia UNESCO</p>
             </motion.div>
 
-            {/* Card Statistik 3 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
