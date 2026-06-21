@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Navigation } from 'lucide-react';
+import { Link } from 'react-router-dom'; // INI DIA YANG HILANG FATIH-SAMA! ✨
 import L from 'leaflet';
 
 // Custom Icon ala prototype HTML sebelumnya
@@ -14,9 +15,8 @@ const customIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-// Data 35 Titik Wisata Kyoto (Diperluas secara masif)
+// Data 35 Titik Wisata Kyoto 
 const kyotoDestinations = [
-  // 15 Data Original
   { id: 1, name: "Fushimi Inari Taisha", lat: 34.9671, lng: 135.7727, img: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600", desc: "Kuil Shinto dengan ribuan gerbang Torii merah yang ikonis." },
   { id: 2, name: "Kinkaku-ji (Paviliun Emas)", lat: 35.0394, lng: 135.7292, img: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600", desc: "Kuil Zen indah yang dua lantai teratasnya dilapisi daun emas." },
   { id: 3, name: "Kiyomizu-dera", lat: 34.9948, lng: 135.7850, img: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?w=600", desc: "Kuil kuno dengan panggung kayu besar tanpa paku." },
@@ -32,8 +32,6 @@ const kyotoDestinations = [
   { id: 13, name: "Ryoan-ji", lat: 35.0345, lng: 135.7182, img: "https://images.unsplash.com/photo-1563200788-299f06798c8c?w=600", desc: "Menyimpan taman batu Karesansui paling terkenal di Jepang." },
   { id: 14, name: "Tofuku-ji", lat: 34.9765, lng: 135.7741, img: "https://images.unsplash.com/photo-1509315629115-842ebfa4e99f?w=600", desc: "Spot spektakuler dengan jembatan kayu untuk menikmati musim gugur." },
   { id: 15, name: "Kuil Heian", lat: 35.0159, lng: 135.7825, img: "https://images.unsplash.com/photo-1616235889759-53e3ef93c5d6?w=600", desc: "Replika sebagian Istana Kekaisaran Kyoto dengan Torii raksasa." },
-  
-  // 20 Data Tambahan Baru
   { id: 16, name: "Istana Kekaisaran Kyoto", lat: 35.0254, lng: 135.7621, img: "https://images.unsplash.com/photo-1599573836371-3312c5890fae?w=600", desc: "Tempat kediaman keluarga Kekaisaran Jepang hingga tahun 1868." },
   { id: 17, name: "Kuil To-ji", lat: 34.9811, lng: 135.7476, img: "https://images.unsplash.com/photo-1590252985145-6677fbc56598?w=600", desc: "Situs Warisan Dunia dengan pagoda kayu tertinggi di Jepang." },
   { id: 18, name: "Kuil Byodo-in", lat: 34.8893, lng: 135.8077, img: "https://images.unsplash.com/photo-1578439297699-dd6e86ec16f2?w=600", desc: "Kuil spektakuler yang tergambar di koin 10 yen Jepang." },
@@ -123,10 +121,14 @@ export default function ExploreMap() {
                   {activeSpot.desc}
                 </p>
                 <div className="mt-auto">
-                  <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl transition duration-300 flex items-center justify-center gap-2">
+                  <Link 
+                    to="/detail"
+                    state={{ destination: activeSpot }} // INI KUNCI RAHASIANYA! Mengirim data spot yang diklik
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl transition duration-300 flex items-center justify-center gap-2"
+                  >
                     <Navigation size={18} />
                     Lihat Detail Penuh
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ) : (
