@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Navigation } from 'lucide-react';
-import { Link } from 'react-router-dom'; // INI DIA YANG HILANG FATIH-SAMA! ✨
+import { Link } from 'react-router-dom';
 import L from 'leaflet';
+
+// 1. IMPORT GAMBAR LOKAL DI SINI FATIH-SAMA ✨
+import fushimiInariImg from '../assets/ExploreMap/fushimiinari-EM.avif';
 
 // Custom Icon ala prototype HTML sebelumnya
 const customIcon = new L.Icon({
@@ -15,9 +18,12 @@ const customIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-// Data 35 Titik Wisata Kyoto 
+// Data 35 Titik Wisata Kyoto
 const kyotoDestinations = [
-  { id: 1, name: "Fushimi Inari Taisha", lat: 34.9671, lng: 135.7727, img: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600", desc: "Kuil Shinto dengan ribuan gerbang Torii merah yang ikonis." },
+  // 2. GUNAKAN VARIABEL GAMBAR YANG SUDAH DI-IMPORT UNTUK ID 1
+  { id: 1, name: "Fushimi Inari Taisha", lat: 34.9671, lng: 135.7727, img: fushimiInariImg, desc: "Kuil Shinto dengan ribuan gerbang Torii merah yang ikonis." },
+  
+  // Sisa data masih menggunakan link eksternal, bisa Fatih-sama ganti nanti dengan cara yang sama!
   { id: 2, name: "Kinkaku-ji (Paviliun Emas)", lat: 35.0394, lng: 135.7292, img: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600", desc: "Kuil Zen indah yang dua lantai teratasnya dilapisi daun emas." },
   { id: 3, name: "Kiyomizu-dera", lat: 34.9948, lng: 135.7850, img: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?w=600", desc: "Kuil kuno dengan panggung kayu besar tanpa paku." },
   { id: 4, name: "Hutan Bambu Arashiyama", lat: 35.0094, lng: 135.6668, img: "https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?w=600", desc: "Jalan setapak yang diapit pohon bambu raksasa." },
@@ -123,7 +129,7 @@ export default function ExploreMap() {
                 <div className="mt-auto">
                   <Link 
                     to="/detail"
-                    state={{ destination: activeSpot }} // INI KUNCI RAHASIANYA! Mengirim data spot yang diklik
+                    state={{ destination: activeSpot }} 
                     className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl transition duration-300 flex items-center justify-center gap-2"
                   >
                     <Navigation size={18} />
