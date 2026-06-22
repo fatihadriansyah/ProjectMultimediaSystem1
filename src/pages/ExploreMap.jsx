@@ -20,10 +20,7 @@ const customIcon = new L.Icon({
 
 // Data 35 Titik Wisata Kyoto
 const kyotoDestinations = [
-  // 2. GUNAKAN VARIABEL GAMBAR YANG SUDAH DI-IMPORT UNTUK ID 1
   { id: 1, name: "Fushimi Inari Taisha", lat: 34.9671, lng: 135.7727, img: fushimiInariImg, desc: "Kuil Shinto dengan ribuan gerbang Torii merah yang ikonis." },
-  
-  // Sisa data masih menggunakan link eksternal, bisa Fatih-sama ganti nanti dengan cara yang sama!
   { id: 2, name: "Kinkaku-ji (Paviliun Emas)", lat: 35.0394, lng: 135.7292, img: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600", desc: "Kuil Zen indah yang dua lantai teratasnya dilapisi daun emas." },
   { id: 3, name: "Kiyomizu-dera", lat: 34.9948, lng: 135.7850, img: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?w=600", desc: "Kuil kuno dengan panggung kayu besar tanpa paku." },
   { id: 4, name: "Hutan Bambu Arashiyama", lat: 35.0094, lng: 135.6668, img: "https://images.unsplash.com/photo-1504109586057-7a2ae83d1338?w=600", desc: "Jalan setapak yang diapit pohon bambu raksasa." },
